@@ -7,21 +7,8 @@ Una nostra funzione utilizzerà questo dato per generare una password casuale
 Scriviamo tutto (logica e layout) in un unico file index.php
 */
 
+include __DIR__ . '/function.php';
 
-function generatePassword($lenghtPass)
-{
-    $characters = '.,!=_+*0123456789abcdefABCDEF';
-    $charactersLen = strlen($characters);
-    $passwordString = '';
-    for ($i = 0; $i < $lenghtPass; $i++) {
-        $passwordString .= $characters[rand(0, $charactersLen - 1)];
-    }
-    return $passwordString;
-}
-$passwordCreator = isset($_GET["password"]);
-if ($passwordCreator) {
-    echo generatePassword($_GET["password"]);
-}
 
 ?>
 <!doctype html>
