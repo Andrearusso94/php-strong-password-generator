@@ -6,9 +6,22 @@ Una nostra funzione utilizzerà questo dato per generare una password casuale
 (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all’utente. 
 Scriviamo tutto (logica e layout) in un unico file index.php
 */
-$psCharacters = ["a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F", 1, 2, 3, 4, 5, 6, "!", "?", "$", "%",];
 
-var_dump($psCharacters);
+
+function generatePassword($lenghtPass)
+{
+    $characters = '.,!=_+*0123456789abcdefABCDEF';
+    $charactersLen = strlen($characters);
+    $passwordString = '';
+    for ($i = 0; $i < $lenghtPass; $i++) {
+        $passwordString .= $characters[rand(0, $charactersLen - 1)];
+    }
+    return $passwordString;
+}
+$passwordCreator = isset($_GET["password"]);
+if ($passwordCreator) {
+    echo generatePassword($_GET["password"]);
+}
 
 ?>
 <!doctype html>
@@ -31,13 +44,13 @@ var_dump($psCharacters);
     </header>
     <main>
         <div class="mb-3">
-            <form action="index.php"> <label for="" class="form-label">Password</label>
-                <input type="text" class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="">
-                <small id="helpId" class="form-text text-muted">lunghezza password</small>
+            <form action="index.php"> <label for="password" class="form-label"> Lunghezza Password</label>
+                <input type="number" name="password" id="password">
+                <button type="submit">Invia</button>
             </form>
 
         </div>
-        <button type="submit">Invia</button>
+
     </main>
     <footer>
         <!-- place footer here -->
