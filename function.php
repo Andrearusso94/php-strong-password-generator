@@ -14,5 +14,5 @@ function generatePassword($lenghtPass)
 }
 $passwordCreator = isset($_GET["password"]);
 if ($passwordCreator) {
-    echo generatePassword($_GET["password"]);
+    generatePassword($_GET["password"]);
 }
