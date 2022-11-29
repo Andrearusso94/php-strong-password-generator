@@ -56,14 +56,28 @@ include __DIR__ . '/function.php';
 
 
             <?php if (isset($_GET['password'])) : ?>
-                <div class="alert alert-success" role="alert"><strong><?= generatePassword($_GET["password"]); ?></strong>
-                </div><?php endif; ?>
+                <div class="alert alert-success" role="alert">
+                    <strong> <?= generatePassword($_GET["password"], $_GET['num'], $_GET['characters'], $_GET['symbol']); ?></strong>
+                </div>
+            <?php endif; ?>
 
 
             <div class="mb-3 bg-white py-5">
                 <form action="index.php">
                     <label for="password" class="form-label">Lunghezza Password</label>
                     <input class="px-2" type="number" name="password" id="password">
+                    <br>
+
+                    <label for="characters" class="form-label">caratteri</label>
+                    <input type="checkbox" name="characters" id="characters">
+                    <br>
+                    <label for="num" class="form-label">numeri</label>
+                    <input type="checkbox" name="num" id="num">
+
+                    <br>
+                    <label for="symbol" class="form-label">simboli</label>
+                    <input type="checkbox" name="symbol" id="symbol">
+                    <br>
                     <button type="submit">Invia</button>
                 </form>
             </div>
